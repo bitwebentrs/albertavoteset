@@ -1,0 +1,43 @@
+#home {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+#fbp {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+}
+#hmp {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+#igp {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+}
+#fb-log {
+  width: 68%;
+  height: 38px;
+  background-color: #3c6eb5ea;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+}
+#ig-log {
+  height: 38px;
+  background-color: #3c6eb5ea;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+}

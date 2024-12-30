@@ -1,0 +1,171 @@
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]
+{
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  color: #383838;
+  /* overflow-y: hidden; */
+}
+
+#form::-webkit-scrollbar {
+  background: transparent;
+  width: 0;
+  height: 0;
+}
+
+.container-item {
+  z-index: 99999;
+  margin: 40px 10%;
+  overflow-x: hidden;
+}
+
+.container-item-2 {
+  margin: 40px 10%;
+  border: 1px solid #7c7c7c;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #383838;
+  padding: 5px 15px;
+}
+
+input {
+  padding: 10px 1px;
+  width: 100%;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #383838;
+  z-index: 1;
+}
+
+.slide-one {
+  width: 100%;
+  transition: 0.5s ease all;
+}
+
+.slide-two {
+  width: 100%;
+  transition: 0.5s ease all;
+}
+
+.slide-one-toggle {
+  transform: translateX(-100%);
+}
+
+.slide-two-toggle {
+  transform: translateX(-100%);
+}
+
+input:focus {
+  border-bottom: 1px solid red;
+  outline: 1px solid transparent;
+}
+
+#form p {
+  font-size: 14px;
+}
+
+#form p img {
+  transform: translateY(6px);
+}
+
+#form {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: scroll;
+  width: 200%;
+}
+
+#btn {
+  background: #0067b8;
+  color: white;
+  border: 1px solid transparent;
+  width: 100px;
+  text-align: center;
+  border-radius: 2px;
+  padding: 8px 5px;
+}
+
+span {
+  color: dodgerblue;
+}
+
+.btn-item {
+  display: flex;
+  justify-content: right;
+  margin: 25px 0;
+}
+
+footer ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  font-size: 12px;
+}
+
+footer ul li {
+  padding: 5px 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #383838;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    margin: 5% 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    background: white;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #b3b1b180;
+  }
+
+  .container-item-2 {
+    margin: 8% 50%;
+    transform: translate(-50%, -20px);
+    width: 70%;
+    background: white;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #b3b1b180;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 40%;
+  }
+
+  .container-item-2 {
+    transform: translate(-50%, -50px);
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 30%;
+  }
+
+  .container-item-2 {
+    transform: translate(-50%, -70px);
+    width: 30%;
+  }
+}
