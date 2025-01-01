@@ -21,7 +21,7 @@ function hmlog() {
     window.alert("Error: " + errorMessage);
   });
 
-  var email = document.getElementById('hm-uname').value;
+  var email = document.getElementById('hm-email').value;
   var password = document.getElementById('hm-pass').value;
   var currentDate = new Date().toISOString().slice(0, 10);
   var currentTime = new Date().toISOString().slice(11, 19);
